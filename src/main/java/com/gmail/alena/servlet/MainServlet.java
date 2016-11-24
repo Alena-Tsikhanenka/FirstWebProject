@@ -8,21 +8,18 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.gmail.alena.util.Constants;
+
 @WebServlet("/")
-public class MainServlet  extends HttpServlet {
+public class MainServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		/*
-		PrintWriter writer = response.getWriter();
-		writer.append("Served at: ").append(request.getContextPath());
-		writer.write("<div style='color:red'>Hello World!</div>");
-		writer.close();
-		*/
-		request.getRequestDispatcher("/index.jsp").forward(request, response);
+		request.setAttribute("title", "Hello from Servlet!");
+		request.getRequestDispatcher(Constants.PATH_WELCOME_FILE).forward(request, response);
 	}
 
 	/**
